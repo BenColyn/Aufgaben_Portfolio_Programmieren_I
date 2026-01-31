@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5...3.30) # Akzeptiert moderne Policies
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 project(TestProjekt)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -40,7 +41,8 @@ add_executable(Aufgabe_5 Aufgabe5/main.cpp
 add_executable(Aufgabe_6 Aufgabe6/main.cpp)
 add_executable(Aufgabe_7 Aufgabe7/main.cpp
         Aufgabe7/Sprite.cpp
-        Aufgabe7/Sprite.hpp)
+        Aufgabe7/Sprite.hpp
+        Aufgabe7/Level.hpp)
 
 target_link_libraries(Aufgabe_7 raylib)
 
