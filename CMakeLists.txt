@@ -39,12 +39,12 @@ add_executable(Aufgabe_5 Aufgabe5/main.cpp
         Aufgabe5/MyCppArrayB.cpp
         Aufgabe5/MyCppArrayB.h)
 add_executable(Aufgabe_6 Aufgabe6/main.cpp)
-add_executable(Aufgabe_7 Aufgabe7/main.cpp
-        Aufgabe7/Sprite.cpp
-        Aufgabe7/Sprite.hpp
-        Aufgabe7/Level.hpp)
+add_executable(Aufgabe_7-8 Aufgabe7-8/main.cpp
+        Aufgabe7-8/Sprite.cpp
+        Aufgabe7-8/Sprite.hpp
+        Aufgabe7-8/Level.hpp)
 
-target_link_libraries(Aufgabe_7 raylib)
+target_link_libraries(Aufgabe_7-8 raylib)
 
 # Sorgt dafür, dass die Header-Dateien gefunden werden
-target_include_directories(Aufgabe_7 PUBLIC ${raylib_SOURCE_DIR}/src)
+target_include_directories(Aufgabe_7-8 PUBLIC ${raylib_SOURCE_DIR}/src)

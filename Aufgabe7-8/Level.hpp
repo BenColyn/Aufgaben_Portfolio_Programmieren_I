@@ -4,6 +4,7 @@
 #include "Sprite.hpp"
 #include <vector>
 #include <memory>
+#include <algorithm>
 
 namespace game {
 
@@ -83,8 +84,40 @@ namespace game {
                             (float)sprites_[idx2]->texture_.width, (float)sprites_[idx2]->texture_.height};
             return CheckCollisionRecs(r1, r2);
         }
-    };
+        void processSplitting(std::vector<int>& indices) {
+            // Doppelte Einträge entfernen und absteigend sortieren zum sicheren Löschen
+            std::sort(indices.begin(), indices.end());
+            indices.erase(std::unique(indices.begin(), indices.end()), indices.end());
 
-} // namespace game
+            for (int i = indices.size() - 1; i >= 0; --i) {
+                int idx = indices[i];
+
+                // Position und Größe merken, bevor wir das Objekt löschen
+                int oldX = sprites_[idx]->pos_x_;
+                int oldY = sprites_[idx]->pos_y_;
+                int oldWidth = sprites_[idx]->texture_.width;
+
+                // Nur zerfallen, wenn das Sprite noch groß genug ist (z.B. > 20 Pixel)
+                if (oldWidth > 20) {
+                    createNewSmallSprite(oldX, oldY);
+                }
+
+                // Altes Sprite entfernen
+                sprites_.erase(sprites_.begin() + idx);
+                velocities_.erase(velocities_.begin() + idx);
+            }
+        }
+
+        void createNewSmallSprite(int x, int y) {
+            // Hier nutzen wir den Pfad-Konstruktor für ein kleineres Bild (z.B. "small_rock.png")
+            // Oder wir nutzen die gleiche Textur, aber im Spiel sieht es wie Zerfall aus
+            auto small = std::make_shared<game::Sprite>(x, y, "resources/mini_character.png");
+            sprites_.push_back(small);
+            velocities_.push_back({ (float)GetRandomValue(-4, 4), (float)GetRandomValue(-4, 4) });
+        }
+    };
+    }
+
+// namespace game
 
 #endif
