@@ -23,7 +23,8 @@ FetchContent_MakeAvailable(raylib)
 # 'MeinTest' ist der Name, der oben rechts erscheinen soll
 # 'Aufgabe1/main.cpp' ist der Pfad zur Datei
 add_executable(Aufgabe_2 Aufgabe2/main.cpp
-        Aufgabe2/Sprite.h)
+        Aufgabe2/Sprite.h
+        Aufgabe7-8/main.cpp)
 add_executable(Aufgabe_3 Aufgabe3/main.cpp
         Aufgabe3/Wuerfelspiel.cpp Aufgabe3/Wuerfelspiel.h)
 add_executable(Aufgabe_4 Aufgabe4/main.cpp
@@ -42,7 +43,8 @@ add_executable(Aufgabe_6 Aufgabe6/main.cpp)
 add_executable(Aufgabe_7-8 Aufgabe7-8/main.cpp
         Aufgabe7-8/Sprite.cpp
         Aufgabe7-8/Sprite.hpp
-        Aufgabe7-8/Level.hpp)
+        Aufgabe7-8/Level.hpp
+        Aufgabe7-8/main.cpp)
 
 target_link_libraries(Aufgabe_7-8 raylib)
 
