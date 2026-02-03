@@ -1,6 +1,8 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 #include <string>
+#include "Brakes.h"
+
 
 namespace car::component {
     // Engine
@@ -26,25 +28,5 @@ namespace car::component {
         std::string getName() const override { return "Reihen-6-Zylinder Diesel"; }
     };
 
-    // Brakes, Wheels, Gears, Frame, Suspension
-    class Brakes { public: virtual float getBrakeEfficiency() const = 0; virtual ~Brakes() = default; };
-    class CeramicBrakes : public Brakes { float getBrakeEfficiency() const override { return 1.5f; } };
-    class SteelBrakes : public Brakes { float getBrakeEfficiency() const override { return 0.8f; } };
-
-    class Wheels { public: virtual float getGripFactor() const = 0; virtual ~Wheels() = default; };
-    class RacingSlicks : public Wheels { float getGripFactor() const override { return 1.4f; } };
-    class AllTerrainWheels : public Wheels { float getGripFactor() const override { return 0.9f; } };
-
-    class Gears { public: virtual float getRatio() const = 0; virtual ~Gears() = default; };
-    class SequentialGears : public Gears { float getRatio() const override { return 1.3f; } };
-    class AutomaticGears : public Gears { float getRatio() const override { return 0.7f; } };
-
-    class Frame { public: virtual int getWeight() const = 0; virtual ~Frame() = default; };
-    class CarbonFrame : public Frame { int getWeight() const override { return 1100; } };
-    class HeavyDutyFrame : public Frame { int getWeight() const override { return 7500; } };
-
-    class Suspension { public: virtual std::string describe() const = 0; virtual ~Suspension() = default; };
-    class SportSuspension : public Suspension { std::string describe() const override { return "hart und direkt"; } };
-    class AirSuspension : public Suspension { std::string describe() const override { return "sanft gleitend"; } };
 }
 #endif

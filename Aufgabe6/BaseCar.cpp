@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iomanip>
 
+
 namespace car {
     float BaseCar::calculateAccelerationBase() const {
         // Physik: (PS * Getriebeübersetzung * Reifen-Grip) / (Gewicht / 100)

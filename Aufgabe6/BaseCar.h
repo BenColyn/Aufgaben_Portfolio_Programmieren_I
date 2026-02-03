@@ -3,7 +3,11 @@
 #include "Component.h"
 #include <memory>
 #include <iostream>
-
+#include "Brakes.h"
+#include "Gears.h"
+#include "Wheels.h"
+#include "Frame.h"
+#include "Suspension.h"
 namespace car {
     class BaseCar {
     protected:

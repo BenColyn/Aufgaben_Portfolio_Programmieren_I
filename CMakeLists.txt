@@ -40,7 +40,17 @@ add_executable(Aufgabe_5 Aufgabe5/main.cpp
 add_executable(Aufgabe_6 Aufgabe6/main.cpp
         Aufgabe6/component.h
         Aufgabe6/BaseCar.cpp
-        Aufgabe6/BaseCar.h)
+        Aufgabe6/BaseCar.h
+        Aufgabe6/Brakes.cpp
+        Aufgabe6/Brakes.h
+        Aufgabe6/Gears.cpp
+        Aufgabe6/Gears.h
+        Aufgabe6/Wheels.cpp
+        Aufgabe6/Wheels.h
+        Aufgabe6/Frame.cpp
+        Aufgabe6/Frame.h
+        Aufgabe6/Suspension.cpp
+        Aufgabe6/Suspension.h)
 add_executable(Aufgabe_7-8 Aufgabe7-8/main.cpp
         Aufgabe7-8/Sprite.cpp
         Aufgabe7-8/Sprite.hpp
