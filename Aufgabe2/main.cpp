@@ -5,6 +5,6 @@
 #include <iostream>
 
 int main() {
-    std::cout << "CMake lebt! Aufgabe 2 laeuft." << std::endl;
+
     return 0;
 }

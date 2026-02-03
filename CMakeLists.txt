@@ -44,7 +44,8 @@ add_executable(Aufgabe_7-8 Aufgabe7-8/main.cpp
         Aufgabe7-8/Sprite.cpp
         Aufgabe7-8/Sprite.hpp
         Aufgabe7-8/Level.hpp
-        Aufgabe7-8/main.cpp)
+        Aufgabe7-8/main.cpp
+Aufgabe7-8/resources)
 
 target_link_libraries(Aufgabe_7-8 raylib)
 

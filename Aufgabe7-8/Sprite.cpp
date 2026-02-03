@@ -15,7 +15,7 @@ namespace game {
 
     // Destruktor: Wichtig für das VRAM-Management
     Sprite::~Sprite() {
-        UnloadTexture(texture_);
+
     }
 
     void Sprite::Draw() const {

@@ -1,6 +1,7 @@
 #ifndef LEVEL_HPP
 #define LEVEL_HPP
 
+#include <raylib.h>
 #include "Sprite.hpp"
 #include <vector>
 #include <memory>
@@ -19,7 +20,9 @@ namespace game {
         // Teil a: Methode zum Zeichnen
         void drawAll() {
             for (auto& s : sprites_) {
-                s->Draw();
+                if (s) {
+                    s->Draw();
+                }
             }
         }
 
@@ -59,10 +62,10 @@ namespace game {
 
                 // 3. Erweiterung: Kollision (Sprites löschen sich gegenseitig)
                 for (size_t j = i + 1; j < sprites_.size(); ++j) {
-                    if (CheckCollision(i, j)) {
+                    /*if (CheckCollision(i, j)) {
                         toDelete[i] = true;
                         toDelete[j] = true;
-                    }
+                    } */
                 }
             }
 
@@ -84,7 +87,7 @@ namespace game {
                             (float)sprites_[idx2]->texture_.width, (float)sprites_[idx2]->texture_.height};
             return CheckCollisionRecs(r1, r2);
         }
-        void processSplitting(std::vector<int>& indices) {
+        void processSplitting(std::vector<int>& indices, Texture2D& tex) {
             // Doppelte Einträge entfernen und absteigend sortieren zum sicheren Löschen
             std::sort(indices.begin(), indices.end());
             indices.erase(std::unique(indices.begin(), indices.end()), indices.end());
@@ -99,7 +102,7 @@ namespace game {
 
                 // Nur zerfallen, wenn das Sprite noch groß genug ist (z.B. > 20 Pixel)
                 if (oldWidth > 20) {
-                    createNewSmallSprite(oldX, oldY);
+                    createNewSmallSprite(oldX, oldY, tex);
                 }
 
                 // Altes Sprite entfernen
@@ -108,10 +111,10 @@ namespace game {
             }
         }
 
-        void createNewSmallSprite(int x, int y) {
+        void createNewSmallSprite(int x, int y, Texture2D tex) {
             // Hier nutzen wir den Pfad-Konstruktor für ein kleineres Bild (z.B. "small_rock.png")
             // Oder wir nutzen die gleiche Textur, aber im Spiel sieht es wie Zerfall aus
-            auto small = std::make_shared<game::Sprite>(x, y, "resources/mini_character.png");
+            auto small = std::make_shared<game::Sprite>(x, y, tex); // Nutze die geladene Textur
             sprites_.push_back(small);
             velocities_.push_back({ (float)GetRandomValue(-4, 4), (float)GetRandomValue(-4, 4) });
         }

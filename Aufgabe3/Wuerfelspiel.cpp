@@ -1,6 +1,3 @@
-//
-// Created by benco on 23.01.2026.
-//
 
 #include "Wuerfelspiel.h"
 #include <iostream>

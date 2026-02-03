@@ -10,11 +10,13 @@ int main() {
     SetTargetFPS(60);
 
     game::Level myLevel;
+    // Vor der Schleife die Textur EINMAL laden
+    Texture2D rockTex = LoadTexture("resources/rock.png");
 
     // Teil b: 20 Sprites in einer for-Schleife erstellen
     for (int i = 0; i < 20; ++i) {
-        // Nutzt deinen Pfad-Konstruktor
-        auto newSprite = std::make_shared<game::Sprite>(0, 0, "resources/character.png");
+        // Wir übergeben die fertige Textur 'rockTex' statt des Pfades:
+        auto newSprite = std::make_shared<game::Sprite>(0, 0, rockTex);
         myLevel.sprites_.push_back(newSprite);
     }
 
@@ -26,15 +28,16 @@ int main() {
         myLevel.Update();
 
         BeginDrawing();
-        ClearBackground(DARKGRAY);
+        ClearBackground(WHITE);
 
         // Teil b: Zeichnen über die Levelklasse
         myLevel.drawAll();
 
-        DrawText("Kollision = Löschen", 10, 10, 20, RAYWHITE);
+        DrawText("Kollision = Löschen", 10, 10, 20, BLUE);
         EndDrawing();
     }
 
+    UnloadTexture(rockTex); // Erst hier ganz am Ende löschen!
     CloseWindow();
     return 0;
 }
