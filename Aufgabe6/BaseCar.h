@@ -8,6 +8,8 @@
 #include "Wheels.h"
 #include "Frame.h"
 #include "Suspension.h"
+
+
 namespace car {
     class BaseCar {
     protected:
@@ -24,12 +26,19 @@ namespace car {
 
     public:
         virtual ~BaseCar() = default;
+
         void startEngine();
+
         void stopEngine();
+
         virtual void accelerateForward(float t) = 0;
+
         virtual void accelerateBackward(float t) = 0;
+
         virtual void brake() = 0;
+
         virtual void turnLeft() = 0;
+
         virtual void turnRight() = 0;
 
         std::string getModelName() const { return modelName; }
@@ -38,20 +47,30 @@ namespace car {
     class SportsCar : public BaseCar {
     public:
         SportsCar();
+
         void accelerateForward(float t) override;
+
         void accelerateBackward(float t) override;
+
         void brake() override;
+
         void turnLeft() override;
+
         void turnRight() override;
     };
 
     class HeavyTruck : public BaseCar {
     public:
         HeavyTruck();
+
         void accelerateForward(float t) override;
+
         void accelerateBackward(float t) override;
+
         void brake() override;
+
         void turnLeft() override;
+
         void turnRight() override;
     };
 }
