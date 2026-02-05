@@ -4,5 +4,7 @@
 Gras::Gras() : Pflanze(2.0, "Gruen", 0.1, "Gras") {}
 
 double Gras::berechneWuchshoehe(double t) const {
-    return 0.05 * t;
+    double hoehe = 0.01 * t;
+    if (hoehe > 0.5) return 0.5; // Gras wird hier maximal 0.5 Meter hoch
+    return hoehe;
 }

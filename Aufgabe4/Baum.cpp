@@ -4,6 +4,8 @@
 Baum::Baum() : Pflanze(5.0, "Gelb", 0.5, "Baum") {}
 
 double Baum::berechneWuchshoehe(double t) const {
-    // Blumen wachsen linear, aber wir könnten hier z.B. eine Sättigung einbauen
-    return 0.2 * t;
-}
+
+        double hoehe = 0.2 * t;
+        if (hoehe > 30.0) return 30.0; // Ein Baum wird hier maximal 30 Meter hoch
+        return hoehe;
+    }

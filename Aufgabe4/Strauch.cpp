@@ -4,5 +4,7 @@
 Strauch::Strauch() : Pflanze(20.0, "Hellgruen", 2.0, "Strauch") {}
 
 double Strauch::berechneWuchshoehe(double t) const {
-    return 0.8 * t;
+    double hoehe = 0.25 * t;
+    if (hoehe > 6.0) return 6.0; // Strauch wird hier maximal 4 Meter hoch
+    return hoehe;
 }
