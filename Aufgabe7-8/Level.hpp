@@ -8,7 +8,6 @@
 #include <algorithm>
 
 namespace game {
-
     class Level {
     public:
         // Teil a: Gefordertes Attribut
@@ -39,38 +38,39 @@ namespace game {
                 velocities_.push_back({vx, vy});
             }
         }
-
-        // Teil c: Update-Logik mit Kollisions-Erweiterung
         void Update() {
-            // Wir nutzen ein Flag-System zum Löschen, um die Iteratoren nicht zu beschädigen
+            // Wir nutzen ein Hilfs-Array für das Löschen (falls du das Teil-c Feature nutzt)
             std::vector<bool> toDelete(sprites_.size(), false);
 
             for (size_t i = 0; i < sprites_.size(); ++i) {
-                // 1. Bewegung
+                // 1. Bewegung (Nutzt die Werte aus velocities_)
+                // Wenn velocities_[i].y 0 ist, bewegt er sich nur horizontal!
                 sprites_[i]->pos_x_ += (int)velocities_[i].x;
                 sprites_[i]->pos_y_ += (int)velocities_[i].y;
 
-                // 2. Abprallen an den Bildschirmrändern
+                // 2. Abprallen und Richtung umkehren
+                // Horizontaler Check
                 if (sprites_[i]->pos_x_ <= 0 ||
                     sprites_[i]->pos_x_ + sprites_[i]->texture_.width >= GetScreenWidth()) {
                     velocities_[i].x *= -1;
-                }
+                    }
+                // Vertikaler Check
                 if (sprites_[i]->pos_y_ <= 0 ||
                     sprites_[i]->pos_y_ + sprites_[i]->texture_.height >= GetScreenHeight()) {
                     velocities_[i].y *= -1;
-                }
+                    }
 
-                // 3. Erweiterung: Kollision (Sprites löschen sich gegenseitig)
+                // 3. Optional: Kollisionsprüfung (falls gewünscht)
                 for (size_t j = i + 1; j < sprites_.size(); ++j) {
-                    /*if (CheckCollision(i, j)) {
+                    if (CheckCollision(i, j)) {
                         toDelete[i] = true;
                         toDelete[j] = true;
-                    } */
+                    }
                 }
             }
 
-            // Markierte Sprites entfernen
-            for (int i = sprites_.size() - 1; i >= 0; --i) {
+            // 4. Löschen am Ende der Methode, um Index-Fehler zu vermeiden
+            for (int i = (int)sprites_.size() - 1; i >= 0; --i) {
                 if (toDelete[i]) {
                     sprites_.erase(sprites_.begin() + i);
                     velocities_.erase(velocities_.begin() + i);
@@ -111,6 +111,8 @@ namespace game {
             }
         }
 
+
+
         void createNewSmallSprite(int x, int y, Texture2D tex) {
             // Hier nutzen wir den Pfad-Konstruktor für ein kleineres Bild (z.B. "small_rock.png")
             // Oder wir nutzen die gleiche Textur, aber im Spiel sieht es wie Zerfall aus
@@ -119,7 +121,8 @@ namespace game {
             velocities_.push_back({ (float)GetRandomValue(-4, 4), (float)GetRandomValue(-4, 4) });
         }
     };
-    }
+};
+
 
 // namespace game
 

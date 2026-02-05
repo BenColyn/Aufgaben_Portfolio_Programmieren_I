@@ -1,6 +1,6 @@
 #ifndef BASECAR_H
 #define BASECAR_H
-#include "Component.h"
+
 #include <memory>
 #include <iostream>
 #include "Brakes.h"

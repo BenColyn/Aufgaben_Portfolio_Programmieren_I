@@ -1,6 +1,6 @@
 ﻿#include "Sprite.hpp"
 
-
+#include <random>
 #include "Level.hpp"
 
 int main() {
@@ -10,34 +10,32 @@ int main() {
     SetTargetFPS(60);
 
     game::Level myLevel;
-    // Vor der Schleife die Textur EINMAL laden
-    Texture2D rockTex = LoadTexture("resources/stein.png");
+    Texture2D rockTex = LoadTexture("resources/Rock.png");
 
-    // Teil b: 20 Sprites in einer for-Schleife erstellen
+    // Start-Sprites (optional)
     for (int i = 0; i < 20; ++i) {
-        // Wir übergeben die fertige Textur 'rockTex' statt des Pfades:
         auto newSprite = std::make_shared<game::Sprite>(0, 0, rockTex);
         myLevel.sprites_.push_back(newSprite);
     }
-
-    // Zufällig positionieren
     myLevel.positionRandomly();
 
     while (!WindowShouldClose()) {
-        // Teil c: Update Methode
+        // Input-Abfrage gehört in den Game-Loop der main.cpp
+        if (IsKeyPressed(KEY_SPACE)) {
+            int x = GetRandomValue(0, screenWidth - 64);
+            int y = GetRandomValue(0, screenHeight - 64);
+
+            // Erstellen und direkt in den Vektor des Levels schieben
+            auto newRock = std::make_shared<game::Sprite>(x, y, rockTex);
+            myLevel.sprites_.push_back(newRock);
+        }
+
+        // Update bewegt alle Sprites in myLevel.sprites_
         myLevel.Update();
 
         BeginDrawing();
         ClearBackground(WHITE);
-
-        // Teil b: Zeichnen über die Levelklasse
         myLevel.drawAll();
-
-        DrawText("Kollision = Löschen", 10, 10, 20, BLUE);
         EndDrawing();
     }
-
-    UnloadTexture(rockTex); // Erst hier ganz am Ende löschen!
-    CloseWindow();
-    return 0;
 }
