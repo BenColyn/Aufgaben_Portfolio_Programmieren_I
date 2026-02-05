@@ -26,14 +26,14 @@ int main() {
 
     // 2. Zweiter Durchlauf: Das GLEICHE Objekt wird in der Größe angepasst (Aufgabe 5b.2)
     std::cout << "\nAnpassung: Resize auf 5 Elemente..." << std::endl;
-    dynamischesArray.resize(5); // Alter Speicher wird gelöscht, neuer reserviert
-    dynamischesArray.fillWithRandom(100, 200); // Neu befüllen mit anderen Werten
+    dynamischesArray.resize(2); // Alter Speicher wird gelöscht, neuer reserviert
+    dynamischesArray.fillWithRandom(100, 120); // Neu befüllen mit anderen Werten
 
     std::cout << "Durchlauf 2 - Neue Groesse: " << dynamischesArray.getSize() << std::endl;
     std::cout << "Durchlauf 2 - Neuer Max-Wert: " << dynamischesArray.getBiggestvalue() << std::endl;
 
     // Suche nach einem Wert (Feature aus Teil a, erhalten in Teil b)
-    int gesucht = 50;
+    int gesucht = 111;
     int pos = dynamischesArray.getindex(gesucht); //
     if (pos != -1) {
         std::cout << "Wert " << gesucht << " gefunden an Index: " << pos << std::endl;

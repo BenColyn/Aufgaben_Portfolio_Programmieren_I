@@ -1,6 +1,6 @@
 ﻿#include "Sprite.hpp"
 
-#include "raylib.h"
+
 #include "Level.hpp"
 
 int main() {
@@ -11,7 +11,7 @@ int main() {
 
     game::Level myLevel;
     // Vor der Schleife die Textur EINMAL laden
-    Texture2D rockTex = LoadTexture("resources/rock.png");
+    Texture2D rockTex = LoadTexture("resources/stein.png");
 
     // Teil b: 20 Sprites in einer for-Schleife erstellen
     for (int i = 0; i < 20; ++i) {

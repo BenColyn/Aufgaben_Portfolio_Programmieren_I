@@ -1,7 +1,7 @@
 #ifndef LEVEL_HPP
 #define LEVEL_HPP
 
-#include <raylib.h>
+
 #include "Sprite.hpp"
 #include <vector>
 #include <memory>
