@@ -50,7 +50,9 @@ add_executable(Aufgabe_6 Aufgabe6/main.cpp
         Aufgabe6/Frame.cpp
         Aufgabe6/Frame.h
         Aufgabe6/Suspension.cpp
-        Aufgabe6/Suspension.h)
+        Aufgabe6/Suspension.h
+        Aufgabe6/Engine.cpp
+        Aufgabe6/Engine.h)
 add_executable(Aufgabe_7-8 Aufgabe7-8/main.cpp
         Aufgabe7-8/Sprite.cpp
         Aufgabe7-8/Sprite.hpp
